@@ -5,4 +5,4 @@ console.log(dragQueens);
 
 module.exports = {
   dragQueens, season
-};
+}; //export two variables
