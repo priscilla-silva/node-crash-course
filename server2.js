@@ -13,12 +13,19 @@ const server = http.createServer((req, res) => { //request and response objects
   switch (req.url) { //url method required
     case '/':
       path += 'index.html';
+      res.statusCode = 200;
       break;
     case '/about':
       path += 'about.html';
+      res.statusCode = 200;
       break;
+    case '/about-me': //redirection case
+      res.statusCode = 301; //status code of redirect
+      res.setHeader('Location', '/about');
+      res.end();
     default:
       path += '404.html';
+      res.statusCode = 404;
       break;
   }
 
