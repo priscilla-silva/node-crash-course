@@ -8,8 +8,22 @@ const server = http.createServer((req, res) => { //request and response objects
   //set header content type
   res.setHeader('Content-Type', 'text/html')
 
+  //use a switch statement to determine where the user will be directed
+  let path = './views/';
+  switch (req.url) { //url method required
+    case '/':
+      path += 'index.html';
+      break;
+    case '/about':
+      path += 'about.html';
+      break;
+    default:
+      path += '404.html';
+      break;
+  }
+
   //Send html file
-  fs.readFile('./views/index.html', (err, data) => {
+  fs.readFile(path, (err, data) => {
     if (err) {
       console.log(err);
       res.end();
